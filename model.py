@@ -6,7 +6,7 @@ from sklearn.ensemble import HistGradientBoostingClassifier
 from sklearn.base import BaseEstimator, ClassifierMixin
 
 def load_data():
-	data = pd.read_csv('../Capstone/Real Estate ROI/Data/RDC_Inventory_Core_Metrics_County_History.csv')
+	data = pd.read_csv('./Data/RDC_Inventory_Core_Metrics_County_History.csv')
 	df = data.drop(len(data)-1)
 	Null_fips = df.loc[df['county_name'].isnull(),'county_fips'].unique() # fix missing county name related to Valdez-Cordova, AK
 	df.fillna({'county_name':'valdez-cordova, ak'}, inplace=True)
@@ -111,6 +111,6 @@ def model_output(month):
 
 	return prediction
 
-m = 6 # months
-model_output(m).to_parquet(path='../Capstone/Real Estate ROI/Data/prediction_'+str(m), index=True)
+# m = 6 # months
+# model_output(m).to_parquet(path='./Data/prediction_'+str(m), index=True)
 
