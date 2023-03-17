@@ -11,7 +11,7 @@ countymap = st.container()
 results = st.container()
 options = st.sidebar
  
-data_path = '/Users/callisto/Documents/TDI/Capstone/Real Estate ROI/Data/'
+data_path = 'https://github.com/fatemey/real-estate-roi/Data/'
 with header:
     st.header('Prediction of Return on Investment (ROI) Across the US')
     st.write('**Please choose a county from the left sidebar or simply hover the pointer over any county on the map below.**')
