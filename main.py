@@ -12,6 +12,7 @@ results = st.container()
 options = st.sidebar
  
 data_path = './Data/'
+RS_data_path = 'https://econdata.s3-us-west-2.amazonaws.com/Reports/Core/'
 with header:
     st.header('Prediction of Return on Investment (ROI) Across the US')
     st.write('**Please choose a county from the left sidebar or simply hover the pointer over any county on the map below.**')
@@ -37,7 +38,7 @@ with options:
 with countymap:
 	# load data
 	prediction = pd.read_parquet(data_path + 'prediction_' + str(month)).reset_index()
-	data = pd.read_csv(data_path + 'RDC_Inventory_Core_Metrics_County_History.csv', dtype = {'county_fips': str})
+	data = pd.read_csv(RS_data_path + 'RDC_Inventory_Core_Metrics_County_History.csv', dtype = {'county_fips': str})
 	data = data.drop(len(data)-1)
 	data.fillna({'county_name':'valdez-cordova, ak'}, inplace=True)
 	df = pd.merge(prediction, data[['county_name','county_fips']], on='county_name', how='left')
